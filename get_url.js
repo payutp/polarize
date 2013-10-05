@@ -7,17 +7,17 @@ $(function() {
 
     var get_url = function(text) {
         var strings = text.split(" ");
-        var url = "http://www.google.com/search?q=";
+        var url = "https://api.datamarket.azure.com/Bing/SearchWeb/v1/Web?format=json&Query=%27";
         for (s in strings) {
             url = url + strings[s];
         }
-
+        url = url + "%27";
         var out;
 
-        $.get(url, {}, function(data) {
-            $("#test").text(data);
+        $.getJSON(url + "&callback=?", null, function(data) {
+            //$("#test").text(data);
             alert("x");
-        })
+        });
     };
 
 });
