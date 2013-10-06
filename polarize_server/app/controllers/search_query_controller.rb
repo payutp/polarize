@@ -19,7 +19,11 @@ class SearchQueryController < ApplicationController
         ret = []
 
         doc.css('h3.r a.l', '//h3/a').each do |link|
-            ret.push("http://google.com" + link['href'])
+            if link['href'][0..3] == "http"
+                ret.push(link['href'])
+            else
+                ret.push("http://google.com" + link['href'])
+            end
         end
         respond_to do |format|
             format.json {render :json => ret.to_json}
