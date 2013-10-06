@@ -16,13 +16,40 @@ class SearchQueryController < ApplicationController
         alchemy_infomation = find_alchemy_infomation(absolute_urls, params[:t])
         print 3
 
-        sentences = find_topic_sentences(alchemy_infomation)
+        sentences, topic_score = find_topic_sentences(alchemy_infomation, params[:t])
         alchemy_infomation.each_with_index do |alif, ind|
             alif['sentence'] = sentences[ind]
+            alif['topic_score'] = topic_score[ind]
         end
 
+        positive = []
+        negative = []
+        number = alchemy_infomation.length / 2
+        if number > 5
+            number = 5
+        end
+        idx = 0
+        while idx < number do
+            positive.push ({
+                'sentence' => alchemy_infomation[-idx]['sentence'],
+                'author' => alchemy_infomation[-idx]['author'],
+                'title' => alchemy_infomation[-idx]['title'],
+            })
+            negative.push ({
+                'sentence' => alchemy_infomation[idx]['sentence'],
+                'author' => alchemy_infomation[idx]['author'],
+                'title' => alchemy_infomation[idx]['title'],
+            })
+            idx += 1
+        end
+
+        response = {
+            'positive' => positive,
+            'negative' => negative
+        }
+
         respond_to do |format|
-            format.json {render :json => alchemy_infomation.to_json}
+            format.json {render :json => response.to_json}
             format.all {render :text => "Only JSON supported at the moment"}
         end
     end
@@ -93,7 +120,7 @@ class SearchQueryController < ApplicationController
                 rescue Timeout::Error
                     p "Timeout Follow Relative URLs: " + search_resulted_url
                 rescue Exception => e
-                    p "Error " + e + " Follow Relative URLs: " + search_resulted_url
+                    p "Error " + e.to_s() + " Follow Relative URLs: " + search_resulted_url
                 end
             end
         end
@@ -114,7 +141,7 @@ class SearchQueryController < ApplicationController
         author_app = 'URLGetAuthor'
         title_app = 'URLGetTitle'
 
-        target_sentiment_args = '&showSourceText=1&target=' + keyword
+        target_sentiment_args = '&showSourceText=1&target=' + URI.escape(keyword)
         keyword_args = '&sentiment=1'
         author_args = ''
         title_args = ''
@@ -142,6 +169,8 @@ class SearchQueryController < ApplicationController
                     end
                 rescue Timeout::Error
                     p "Timeout Targeted Sentiment: " + url
+                rescue Exception => e
+                    p "Error " + e.to_s() + " Targeted Sentiment: " + url
                 end
             end
             threads.push thread
@@ -158,6 +187,8 @@ class SearchQueryController < ApplicationController
                     end
                 rescue Timeout::Error
                     p "Timeout Keyword: " + url
+                rescue Exception => e
+                    p "Error " + e.to_s() + " Keyword: " + url
                 end
             end
             threads.push thread
@@ -174,6 +205,8 @@ class SearchQueryController < ApplicationController
                     end
                 rescue Timeout::Error
                     p "Timeout Author: " + url
+                rescue Exception => e
+                    p "Error " + e.to_s() + " Author: " + url
                 end
             end
             threads.push thread
@@ -190,6 +223,8 @@ class SearchQueryController < ApplicationController
                     end
                 rescue Timeout::Error
                     p "Timeout Title: " + url
+                rescue Exception => e
+                    p "Error " + e.to_s() + " Title: " + url
                 end
             end
             threads.push thread
@@ -206,21 +241,22 @@ class SearchQueryController < ApplicationController
                authors_raw[ind] == nil || titles_raw[ind] == nil ||
                fulltexts_raw[ind]['status'] != 'OK' || keywords_raw[ind]['status'] != 'OK' ||
                authors_raw[ind]['status'] != 'OK' || titles_raw[ind]['status'] != 'OK'
+                puts 'url : ' + url + ' failed.'
                 next
             end
 
             if fulltexts_raw[ind]['docSentiment']['type'] == 'neutral'
-                fulltexts_raw[ind]['docSentiment']['score'] = 0
+                fulltexts_raw[ind]['docSentiment']['score'] = '0'
             end
 
             keywords_raw[ind]['keywords'].each do |keyword|
                 if keyword['sentiment']['type'] == 'neutral'
-                    keyword['sentiment']['score'] = 0
+                    keyword['sentiment']['score'] = '0'
                 end
             end
 
             alchemy_infomation.push({
-                'score' => fulltexts_raw[ind]['docSentiment']['score'],
+                'score' => fulltexts_raw[ind]['docSentiment']['score'].to_f(),
                 'url' => url,
                 'text' => fulltexts_raw[ind]['text'],
                 'author' => authors_raw[ind]['author'],
@@ -229,60 +265,9 @@ class SearchQueryController < ApplicationController
             })
         end
 
-        alchemy_infomation = alchemy_infomation.sort_by{|obj| obj['score'].to_f}
+        alchemy_infomation = alchemy_infomation.sort_by{|obj| obj['score']}
 
         return alchemy_infomation
-    end
-
-    def find_keyword(urls, keyword)
-        alchemy_sentimental_base_path = 'http://access.alchemyapi.com/calls/url/URLGetTargetedSentiment';
-        global_args = '?apikey=61cc00a7028c5f89e4844f7958d51cfef45a92eb&outputMode=json&showSourceText=1&target=' + keyword;
-
-        mutex_instance = Mutex.new
-        threads = []
-
-        fulltexts_raw = []
-
-        urls.each_with_index do |url, ind|
-            threads[ind] = Thread.new do
-                begin
-                    alchemy_api_url = alchemy_sentimental_base_path + global_args + '&url=' + url
-                    doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
-
-                    mutex_instance.synchronize do
-                        fulltexts_raw.push(doc)
-                    end
-                rescue Timeout::Error
-                    p "Timeout Targeted Sentiment: " + url
-                end
-            end
-        end
-
-        threads.each do |thread|
-            thread.join()
-        end
-
-        fulltexts_with_score = []
-
-        fulltexts_raw.each do |alchemy_ret|
-            if alchemy_ret['status'] != 'OK'
-                next
-            end
-
-            if alchemy_ret['docSentiment']['type'] == 'neutral'
-                alchemy_ret['docSentiment']['score'] = 0
-            end
-
-            fulltexts_with_score.push({
-                'score' => alchemy_ret['docSentiment']['score'],
-                'url' => alchemy_ret['url'],
-                'text' => alchemy_ret['text']
-            })
-        end
-
-        fulltexts_with_score = fulltexts_with_score.sort_by{|obj| obj['score'].to_f}
-
-        return fulltexts_with_score
     end
 
     @@abbreviations = Set.new ["abbr.","abr.","acad.","adj.","adm.","adv.","agr.",
@@ -332,9 +317,7 @@ class SearchQueryController < ApplicationController
             else
                 count += 1
                 if count > 3 && sentence.length > 0
-                    if sentence.length > 5
-                        segemented_sentences.push sentence.join(' ')
-                    end
+                    segemented_sentences.push sentence
                     sentence = []
                 end
                 if word.length > 0
@@ -343,9 +326,7 @@ class SearchQueryController < ApplicationController
                     if ((word[-1] == '.' || word[-1] == '!' || word[-1] == '?') &&
                         word.length > 3 && word[-2] != '.' && word[-3] != '.' &&
                         !@@abbreviations.include?(word.downcase))
-                        if sentence.length > 5
-                            segemented_sentences.push sentence.join(' ')
-                        end
+                        segemented_sentences.push sentence
                         sentence = []
                     end
                     word = []
@@ -357,24 +338,97 @@ class SearchQueryController < ApplicationController
             word = []
         end
         if sentence.length > 0
-            segemented_sentences.push sentence.join(' ')
+            segemented_sentences.push sentence
             sentence = []
         end
         return segemented_sentences
     end
 
-    def find_topic_sentences(alchemy_infomation)
+    def find_topic_sentences(alchemy_infomation, query)
         mutex_instance = Mutex.new
         threads = []
         topic_sentences = []
+        topic_score = []
 
         alchemy_infomation.each_with_index do |alif, ind|
             threads[ind] = Thread.new do
                 segmented_sentences = sentence_segmentation(alif['text'])
 
+                keyword_inv = {}
+                alif['keywords'].each_with_index do |keyword, idx|
+                    keyword_inv[keyword['text'].downcase] = idx
+                end
+
+                relevance_sentences = []
+                sentiment_sentences = []
+                has_query_sentences = []
+                segmented_sentences.each do |sentence|
+                    relevance = 0.0
+                    sentiment = 0.0
+                    has_query = 0
+                    st = 0
+                    while st < sentence.length do
+                        len = 1
+                        while len <= 3 && st + len <= sentence.length do
+                            word = sentence[st, len].join(' ').downcase
+
+                            if keyword_inv.include?(word)
+                                relevance += alif['keywords'][keyword_inv[word]]['relevance'].to_f()
+                                sentiment += alif['keywords'][keyword_inv[word]]['sentiment']['score'].to_f().abs() **
+                                             (1.0 / alif['keywords'][keyword_inv[word]]['relevance'].to_f())
+                            end
+                            if query.downcase == word
+                                has_query = 1
+                            end
+                            len += 1
+                        end
+                        st += 1
+                    end
+                    relevance_sentences.push relevance
+                    sentiment_sentences.push sentiment
+                    has_query_sentences.push has_query
+                end
+
+                best_sentence = ''
+                best_score = -10
+
+                st = 0
+                while st < segmented_sentences.length do
+                    ed = st
+                    word_count = 0
+                    relevance = 0.0
+                    sentiment = 0.0
+                    has_query = 0
+                    while ed < st + 3 && ed < segmented_sentences.length do
+                        if segmented_sentences[ed].length < 5
+                            break
+                        end
+                        word_count += segmented_sentences[ed].length
+                        if word_count > 40
+                            break
+                        end
+                        relevance += relevance_sentences[ed]
+                        sentiment += sentiment_sentences[ed]
+                        has_query += has_query_sentences[ed]
+                        score = (relevance / word_count + 10 * sentiment / word_count) *
+                                (1 - ((20 - word_count) / 15.0).abs())
+                        if has_query > 0
+                            score += 1
+                        end
+                        if score > best_score
+                            best_score = score
+                            best_sentence = segmented_sentences[st, ed - st + 1].flatten(1).join(' ')
+
+                            puts ind.to_s() + ': ' + st.to_s() + '-' + ed.to_s() + ' ' + score.to_s() + ' ' + best_sentence
+                        end
+                        ed += 1
+                    end
+                    st += 1
+                end
+
                 mutex_instance.synchronize do
-                    # szu-po should select base on sentiment instead of returning the first one
-                    topic_sentences[ind] = segmented_sentences[0]
+                    topic_sentences[ind] = best_sentence
+                    topic_score[ind] = best_score
                 end
             end
         end
@@ -383,7 +437,7 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
-        return topic_sentences
+        return topic_sentences, topic_score
     end
 
 end
