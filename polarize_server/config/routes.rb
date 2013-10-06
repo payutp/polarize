@@ -22,6 +22,8 @@ PolarizeServer::Application.routes.draw do
     end
   end
 
+  resources :search
+
   match '/alchemy/test_pasin', :to => 'alchemy#test_pasin'
   match '/alchemy/alchemy_api_ajax', :to => 'alchemy#alchemy_api_ajax'
 

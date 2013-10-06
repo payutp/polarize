@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Patua+One' type='text/css'>
+<title>Polarize</title>
+</head>
+
+<h1>This is the goddamn second page.</h1>
+
+<body>
+<div> The query is <%= @query %>. </div>
+<div id='query_test'> (Test) The query is ???. </div>
+
+<h2>Below is the fucking result.</h2>
+<div id='result_test'>Please wait a bit while we're fucking busy querying your search</div>
+</body>
+
+</html>
+<%= javascript_include_tag "application" %>
+<%= render :partial => "ajax_call.js" %>
