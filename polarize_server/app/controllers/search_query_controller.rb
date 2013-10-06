@@ -44,13 +44,11 @@ class SearchQueryController < ApplicationController
                 
                 mutex_instance.synchronize do
                     doc.css('h3.r a.l', '//h3/a').each do |link|
-                        if
+                        if !link['href'].start_with?('http')
                             search_resulted_urls.push("http://google.com" + link['href'])
-                        end
-                        # Pasin: I believe that the link below is adv but I'm not sure.
-                        %%if link['href'][0..3] == "http"
+                        else
                             search_resulted_urls.push(link['href'])
-                        end%
+                        end
                     end
                 end
             end
@@ -60,7 +58,7 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
-        return search_resulted_urls
+        return search_resulted_urls.uniq
      end
 
      def follow_relative_urls(search_resulted_urls)
@@ -86,7 +84,7 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
-        return absolute_urls
+        return absolute_urls.uniq
      end
 
      def find_targeted_sentiment(urls, keyword)
