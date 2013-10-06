@@ -7,17 +7,26 @@ require 'thread'
 class SearchQueryController < ApplicationController    
      def access_url
 
-        pages_google = 3
+        search_resulted_urls = search_from_google(3, params[:t])
 
+        absolute_urls = follow_relative_urls(search_resulted_urls)
+
+        respond_to do |format|
+            format.json {render :json => absolute_urls.to_json}
+            format.all {render :text => "Only JSON supported at the moment"}
+        end
+     end
+
+     def search_from_google(num_pages, query_text)
         search_resulted_urls = []
 
         mutex_instance = Mutex.new
         threads = []
 
-        text = params[:t]
+        text = query_text
         strings = text.split
 
-        pages_google.times do |i|
+        num_pages.times do |i|
             threads[i] = Thread.new do
                 if i == 0
                     url = 'http://google.com/search?q='
@@ -48,6 +57,11 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
+        return search_resulted_urls
+     end
+
+     def follow_relative_urls(search_resulted_urls)
+        mutex_instance = Mutex.new
         absolute_urls = []
         threads = []
         search_resulted_urls.each_with_index do |search_resulted_url, ind|
@@ -69,9 +83,6 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
-        respond_to do |format|
-            format.json {render :json => absolute_urls.to_json}
-            format.all {render :text => "Only JSON supported at the moment"}
-        end
+        return absolute_urls
      end
 end
