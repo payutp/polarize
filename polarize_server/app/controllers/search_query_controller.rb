@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'open_uri_redirections'
 require 'thread'
 require 'set'
+require 'json'
 
 class SearchQueryController < ApplicationController
      def access_url
@@ -12,8 +13,10 @@ class SearchQueryController < ApplicationController
 
         absolute_urls = follow_relative_urls(search_resulted_urls)
 
+        fulltexts_with_score = find_targeted_sentiment(absolute_urls, params[:t])
+
         respond_to do |format|
-            format.json {render :json => absolute_urls.to_json}
+            format.json {render :json => fulltexts_with_score.to_json}
             format.all {render :text => "Only JSON supported at the moment"}
         end
      end
@@ -127,4 +130,52 @@ class SearchQueryController < ApplicationController
 
         return sentences
     end
+
+    def find_targeted_sentiment(urls, keyword)
+        alchemy_sentimental_base_path = 'http://access.alchemyapi.com/calls/url/URLGetTargetedSentiment';
+        global_args = '?apikey=61cc00a7028c5f89e4844f7958d51cfef45a92eb&outputMode=json&showSourceText=1&target=' + keyword;
+
+        mutex_instance = Mutex.new
+        threads = []
+
+        fulltexts_raw = []
+
+        urls.each_with_index do |url, ind|
+            threads[ind] = Thread.new do
+
+                alchemy_api_url = alchemy_sentimental_base_path + global_args + '&url=' + url
+                doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all).read)
+
+                mutex_instance.synchronize do
+                    fulltexts_raw.push(doc)
+                end
+            end
+        end
+
+        threads.each do |thread|
+            thread.join()
+        end
+
+        fulltexts_with_score = []
+
+        fulltexts_raw.each do |alchemy_ret|
+            if alchemy_ret['status'] != 'OK'
+                next
+            end
+
+            if alchemy_ret['docSentiment']['type'] == 'neutral'
+                alchemy_ret['docSentiment']['score'] = 0
+            end
+
+            fulltexts_with_score.push({
+                'score' => alchemy_ret['docSentiment']['score'],
+                'url' => alchemy_ret['url'],
+                'text' => alchemy_ret['text']
+            })
+        end
+
+        fulltexts_with_score = fulltexts_with_score.sort_by{|obj| obj['score'].to_f}
+
+        return fulltexts_with_score
+     end
 end
