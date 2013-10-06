@@ -5,23 +5,36 @@ $(function() {
 
     $(".bigtopic").html(query);
 
-    $.get('/search_query/access_url.json', {t: query}, function(data) {
+    $.get('/search_query/access_url.json', {t: query}, function(raw_data) {
+        $("#result_test").html(raw_data);
+
+        //var data = JSON.parse(raw_data);
+        var data = raw_data;
+
         $("#progressbar").progressbar("destroy");
-        $( ".progress-label" ).text('');
-        for (var cat in ['positive', 'negative']) {
+        $(".progress-label").text('');
+        $("#result_test").html(data);
+        console.log(data);
+        cats = ['positive', 'negative'];
+        for (var i = 0 ; i < 2 ; i ++) {
+            var cat = cats[i];
             var prefix = cat.substring(0, 3);
-            var responds = data[prefix];
-            for (var obj in responds) {
-                $('#' + prefix + 'sentence').html(responds['sentence']);
-                $('#' + prefix + 'link').html(responds['title']);
-                $('#' + prefix + 'link').attr('href', respnds['url']);
-                if (responds['author']) {
-                    $('#' + prefix + 'author').html('&mdash;' + responds['author']);
+            var responds = data[cat];
+            console.log(responds);
+            var ind = 0;
+            for (var ind = 0 ; ind < responds.length ; ind ++) {
+                obj = responds[ind];
+                $('#' + prefix + 'sentence' + ind).html(obj['sentence']);
+                $('#' + prefix + 'link' + ind).html(obj['title']);
+                $('#' + prefix + 'link' + ind).attr('href', obj['url']);
+                if (obj['author']) {
+                    $('#' + prefix + 'author' + ind).html('&mdash;' + obj['author']);
                 } else {
-                    $('#' + prefix + 'author').html('');
+                    $('#' + prefix + 'author' + ind).html('');
                 }
             }
         }
+        $(".grid_6").css("visibility", "visible");
     });
 
     $("#result_test").html('Ajax sent. Waiting for result ...');
@@ -40,28 +53,28 @@ $(function() {
             }
         });
  
-        var count = 0;
-        function progress() {
-            if (progressLabel.text() != '') {
-                var val = progressbar.progressbar("value");
-                count ++;
+        //var count = 0;
+        //function progress() {
+        //    if (progressLabel.text() != '') {
+        //        var val = progressbar.progressbar("value");
+        //        count ++;
 
-                if (count == 2) {
-                    val = 1;
-                }
+        //        if (count == 2) {
+        //            val = 1;
+        //        }
 
-                if (val) {
-                    val ++;
-                    progressbar.progressbar("value", val);
-                }
+        //        if (val) {
+        //            val ++;
+        //            progressbar.progressbar("value", val);
+        //        }
 
-                if (!val || val < 99) {
-                    setTimeout(progress, 200);
-                }
-            }
-        }
+        //        if (!val || val < 99) {
+        //            setTimeout(progress, 200);
+        //        }
+        //    }
+        //}
 
-        setTimeout( progress, 3000 );
+        //setTimeout( progress, 3000 );
    });
 
 });
