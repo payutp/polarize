@@ -5,15 +5,10 @@ class SearchQueryController < ApplicationController
      def access_url
         text = params[:t]
         strings = text.split
-        puts text
         url = 'http://google.com/search?q='
 
-        for s in strings
-            url = url + s + "+"
-        end
-        if strings.length >= 1
-            url = url[0..url.length-2]
-        end
+        tmp = strings.join("+")
+        url = url + tmp
 
         doc = Nokogiri::HTML(open(url))
         ret = []

@@ -16,6 +16,15 @@ PolarizeServer::Application.routes.draw do
     end
   end
 
+  resources :alchemy do
+    collection do
+      get 'alchemy_api'
+    end
+  end
+
+  match '/alchemy/test_pasin', :to => 'alchemy#test_pasin'
+  match '/alchemy/alchemy_api_ajax', :to => 'alchemy#alchemy_api_ajax'
+
   root :to => "home#index"
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
