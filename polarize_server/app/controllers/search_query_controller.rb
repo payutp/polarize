@@ -22,23 +22,35 @@ class SearchQueryController < ApplicationController
             alif['topic_score'] = topic_score[ind]
         end
 
+        alchemy_hash = {}
+        filtered = []
+        alchemy_infomation.each do |alif|
+            if alchemy_hash.include?(alif['sentence'])
+                next
+            end
+            alchemy_hash[alif['sentence']] = 1
+            filtered.push alif
+        end
+
         positive = []
         negative = []
-        number = alchemy_infomation.length / 2
+        number = filtered.length / 2
         if number > 5
             number = 5
         end
         idx = 0
         while idx < number do
             positive.push ({
-                'sentence' => alchemy_infomation[-idx]['sentence'],
-                'author' => alchemy_infomation[-idx]['author'],
-                'title' => alchemy_infomation[-idx]['title'],
+                'sentence' => filtered[-idx-1]['sentence'],
+                'author' => filtered[-idx-1]['author'],
+                'title' => filtered[-idx-1]['title'],
+                'url' => filtered[-idx-1]['url'],
             })
             negative.push ({
-                'sentence' => alchemy_infomation[idx]['sentence'],
-                'author' => alchemy_infomation[idx]['author'],
-                'title' => alchemy_infomation[idx]['title'],
+                'sentence' => filtered[idx]['sentence'],
+                'author' => filtered[idx]['author'],
+                'title' => filtered[idx]['title'],
+                'url' => filtered[idx]['url'],
             })
             idx += 1
         end
@@ -238,10 +250,23 @@ class SearchQueryController < ApplicationController
 
         urls.each_with_index do |url, ind|
             if fulltexts_raw[ind] == nil || keywords_raw[ind] == nil ||
-               authors_raw[ind] == nil || titles_raw[ind] == nil ||
-               fulltexts_raw[ind]['status'] != 'OK' || keywords_raw[ind]['status'] != 'OK' ||
-               authors_raw[ind]['status'] != 'OK' || titles_raw[ind]['status'] != 'OK'
-                puts 'url : ' + url + ' failed.'
+               authors_raw[ind] == nil || titles_raw[ind] == nil
+                puts 'url0 : ' + url + ' failed.' + fulltexts_raw[ind].to_s() + ' ' +
+                     keywords_raw[ind].to_s() + ' ' + authors_raw[ind].to_s() + ' ' +
+                     titles_raw[ind].to_s()
+                next
+            end
+            if authors_raw[ind]['status'] != 'OK'
+                authors_raw[ind]['status'] = 'OK'
+                authors_raw[ind]['author'] = ''
+            end
+            if titles_raw[ind]['status'] != 'OK'
+                titles_raw[ind]['status'] = 'OK'
+                titles_raw[ind]['title'] = ''
+            end
+            if fulltexts_raw[ind]['status'] != 'OK' || keywords_raw[ind]['status'] != 'OK'
+                puts 'url : ' + url + ' failed.' + fulltexts_raw[ind]['status'] + ' ' +
+                     keywords_raw[ind]['status']
                 next
             end
 
@@ -419,7 +444,7 @@ class SearchQueryController < ApplicationController
                             best_score = score
                             best_sentence = segmented_sentences[st, ed - st + 1].flatten(1).join(' ')
 
-                            puts ind.to_s() + ': ' + st.to_s() + '-' + ed.to_s() + ' ' + score.to_s() + ' ' + best_sentence
+                            #puts ind.to_s() + ': ' + st.to_s() + '-' + ed.to_s() + ' ' + score.to_s() + ' ' + best_sentence
                         end
                         ed += 1
                     end
