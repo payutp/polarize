@@ -1,29 +1,70 @@
-<!DOCTYPE html>
-
-<html>
-
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Patua+One' type='text/css'>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script|Rambla:700,400|Oleo+Script' type='text/css'>
+<%= stylesheet_link_tag "css/search" %>
+<%= stylesheet_link_tag "css/960" %>
+<%= stylesheet_link_tag "css/960_12_col" %>
 <title>Polarize</title>
 </head>
 
-<h1>This is the goddamn second page.</h1>
-
 <body>
-<div> The query is <%= @query %>. </div>
-<div id='query_test'> (Test) The query is ???. </div>
-
-<h2>Below is the fucking result.</h2>
-<div id='result_test'>Please wait a bit while we're fucking busy querying your search</div>
+<div id="container" class="container_12">
+  <div id="topbar">
+    <div id="logo" class="grid_3 intopbar">
+      <h1 class="inintopbar">
+        <%= link_to image_tag("logo_small.png"), {:action => 'index', :controller => 'home'} %>
+      </h1>
+    </div>
+    <div id="searchbar" class="grid_8 intopbar">
+      <form class="inintopbar">
+        <div class="grid_6 alpha"><input id="query" type="text" name="query" autofocus></div>
+        <div class="grid_2 omega"><input id="b1" type="Submit" class="whitebutton" value="Polarize!"></div>
+      </form>
+    </div>
+    <div id="aboutbutton" class="grid_1 intopbar">
+      About
+    </div>
+  </div>
+  <div class="clear below"></div>
+  <div id="topicbar" class="grid_12 topic">
+    <div>Here's what people say about</div>
+    <div class="bigtopic">Obamacare</div>
+  </div>
+  <div class="clear below"></div>
+  <div class="grid_6">
+    <h2 class="positive">Positive</h2>
+    <% 5.times.each do |i|%>
+      <div class="positive results">
+        <div class="positive block"></div>
+        <div class="actualresult">
+          <div class="positive sentence" id="possentence<%=i%>">Thanks to Obamacare, I had the knee surgery I needed.</div>
+          <div class="article"><a class="articlelink" id="poslink<%=i%>" href="http://www.google.com">Nobody Benefits from Obamacare? Think Again.</a><div id="posauthor<%=i%>"> &mdash; Dan Brown</div></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ <div class="grid_6">
+    <h2 class="negative">Negative</h2>
+    <% 5.times.each do |i| %>
+      <div class="negative results">
+        <div class="negative block"></div>
+        <div class="actualresult">
+          <div class="negative sentence" id="negsentence<%=i%>" >Thanks to Obamacare, I had the knee surgery I needed.</div>
+          <div class="article"><a class="articlelink" id="neglink<%=i%>" href="#">Nobody Benefits from Obamacare? Think Again.</a> <div id="negauthor<%=i%>">&mdash; Dan Brown</div></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="clear"></div>
+</div>
 </body>
 
 <div id="progressbar"><div class="progress-label">Loading...</div></div>
 
 </html>
 
-<%= javascript_include_tag "application" %>
-<%= stylesheet_link_tag "css/main" %>
-<%= stylesheet_link_tag "css/960" %>
+
+
 <%= render :partial => "ajax_call.js" %>
+
+

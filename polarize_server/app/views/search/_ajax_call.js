@@ -3,12 +3,25 @@ $(function() {
 
     var query = "<%= @query %>";
 
-    $("#query_test").html('(Test) The query is ' + query + '.');
+    $(".bigtopic").html(query);
 
     $.get('/search_query/access_url.json', {t: query}, function(data) {
         $("#progressbar").progressbar("destroy");
         $( ".progress-label" ).text('');
-        $("#result_test").html(JSON.stringify(data));
+        for (var cat in ['positive', 'negative']) {
+            var prefix = cat.substring(0, 3);
+            var responds = data[prefix];
+            for (var obj in responds) {
+                $('#' + prefix + 'sentence').html(responds['sentence']);
+                $('#' + prefix + 'link').html(responds['title']);
+                $('#' + prefix + 'link').attr('href', respnds['url']);
+                if (responds['author']) {
+                    $('#' + prefix + 'author').html('&mdash;' + responds['author']);
+                } else {
+                    $('#' + prefix + 'author').html('');
+                }
+            }
+        }
     });
 
     $("#result_test").html('Ajax sent. Waiting for result ...');
