@@ -4,16 +4,29 @@ body {
 }
 
 h1 {
-  font-family: 'News Cycle', sans-serif;
+  font-family: 'Rambla', sans-serif;
   font-weight: bold;
   font-size: 44px;
   line-height: 50px;
   text-shadow: 2px 2px 3px #ffffff;
-  margin: 10px 0px;
+  margin: 0px 0px;
 }
 
-#container {
-  margin-top: 240px;
+h2 {
+  font-family: 'Rambla', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  font-size: 40px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+h2.positive {
+  color: #c83737;
+}
+
+h2.negative {
+  color: #2c5aa0;
 }
 
 #query {
@@ -25,6 +38,93 @@ h1 {
 #hint {
   font-size: 11px;
   color: #444444;
+}
+
+#searchbar {
+  margin-top: 10px;
+}
+
+#helpbutton, #aboutbutton {
+  text-align: center;
+  text-shadow: 1px 1px 0px #ffffff;
+  margin-top: 15px;
+}
+
+.results {
+  display: table;
+  margin: 18px 0px;
+}
+
+.block, .actualresult {
+  display: table-cell;
+}
+
+.actualresult {
+  height: 100%;
+  padding-left: 5px;
+}
+
+.block {
+  width: 14px;
+  height: 100%;
+}
+
+.positive.block {
+  background-color: #c83737;
+}
+
+.negative.block {
+  background-color: #2c5aa0;
+}
+
+.article {
+  margin-top: 10px;
+}
+
+.articlelink {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a.articlelink {
+  color: #333333;
+}
+
+a:hover.articlelink {
+  color: #333399;
+}
+
+.sentence {
+  font-family: 'Oleo Script', cursive;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.positive.sentence {
+  color: #c83737;
+}
+
+.negative.sentence {
+  color: #2c5aa0;
+}
+
+.below {
+  margin-bottom: 30px;
+}
+
+.topic {
+  font-family: 'News Cycle', sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.bigtopic {
+  font-size: 48px;
+  line-height: 48px;
+  text-transform: uppercase;
+  margin-top: 5px;
 }
 
 .positive-title {
