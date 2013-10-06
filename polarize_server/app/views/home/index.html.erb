@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=News+Cycle:400,700|Patua+One' type='text/css'>
+<title>Polarize</title>
+</head>
+
+<body>
+<div id="container" class="container_12">
+  <div class="grid_6">
+    <h1>Learn people's opinions from both sides,<br>
+    <span class="positive-title">positive</span> and
+    <span class="negative-title">negative</span>.</h1>
+  </div>
+  <div class="grid_6">
+    <div class="grid_6 alpha omega">
+      <h1>
+        <%= image_tag "logo.png" %>
+      </h1>
+    </div>
+    <div class="clear"></div>
+    <div class="grid_6 alpha omega">
+      <form>
+        <div class="grid_4 alpha"><input id="query" type="text" name="query" autofocus></div>
+        <div class="grid_2 omega"><input id="b1" type="Submit" class="whitebutton" value="Polarize!"></div>
+        <div class="clear"></div>
+        <div id="hint" class="grid_6 alpha omega" >Try "Obamacare" or "Vim vs. Emacs"</div>
+      </form>
+    </div>
+  </div>
+  <div class="clear"></div>
+
+  <h2 id="test"> </h2>
+</div>
+</body>
+
+</html>
+
+<%= stylesheet_link_tag "css/960" %>
+<%= stylesheet_link_tag "css/formalize" %>
+<%= stylesheet_link_tag "css/main" %>
+<%= javascript_include_tag "application" %>
+<%= render :partial => "get_url.js" %>
