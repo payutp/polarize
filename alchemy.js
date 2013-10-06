@@ -54,7 +54,7 @@ ENDPOINTS['microformats']['url']  = '/url/URLGetMicroformatData';
 ENDPOINTS['microformats']['html'] = '/html/HTMLGetMicroformatData';
 
 function generate_url(firstkey, secondkey, args) {
-    var url = BASE_URL + ENDPOINTS[firstkey][secondkey] + '?apikey=' + API_KEY;
+    var url = BASE_URL + ENDPOINTS[firstkey][secondkey] + '?apikey=' + API_KEY + '&outputMode=json';
 
     for (var i = 0 ; i < args.length ; i ++) {
 		if (i == 0) {
@@ -70,10 +70,100 @@ function generate_url(firstkey, secondkey, args) {
 }
 
 function ajax_alchemy(firstkey, secondkey, args, after_call) {
-	var url = generate_url(firstkey, secondkey, args);
+	$.get(generate_url(firstkey, secondkey, args), after_call);
+}
 
-	$.ajax({
-		url: url,
-	})
-	.done(after_call);
+var count, expected_total_count;
+var url_info, best, worst;
+var CUT_LENGTH = 100;
+var NUM_FOR = 10, NUM_AGAINST = 10;
+
+function format_output_text(text) {
+	var text2 = text;
+	//var text2 = escape(text);
+	// remove all the goddamn special characters from the string
+	text2 = text2.replace(/[^a-zA-Z ]/g, '');
+
+	if (text2.length > CUT_LENGTH) {
+		i = CUT_LENGTH - 1;
+		while (text2.charAt(i) == ' ') {
+			i --;
+		}
+		text2 = text2.substring(0, i + 1);
+	}
+
+	return text2;
+}
+
+function finish_fetch_score(data) {
+	count ++;
+	document.getElementById("test_result_for").innerHTML = 'Count : ' + count.toString();
+
+	if (data.status == 'OK') {
+		var score;
+		if (data.docSentiment.type != 'neutral') {
+			score = data.docSentiment.score
+		} else {
+			score = 0;
+		}
+		var text = format_output_text(data.text);
+		var url = data.url;
+
+		url_info.push({
+			'score': score,
+			'text': text,
+			'url': url,
+		});
+
+		if (count == expected_total_count) {
+			document.getElementById("test_result_for").innerHTML = 'Count = expected_total_count = ' + count.toString();
+
+			var num_best, num_worst;
+			
+			if (url_info.length >= NUM_FOR + NUM_AGAINST) {
+				num_best = NUM_FOR;
+				num_worst = NUM_AGAINST;
+			} else {
+				num_best = (url_info.length + 1) / 2;
+				num_worst = url_info.length - num_best;
+			}
+			
+			url_info.sort(
+				function(obj1, obj2) {
+					return obj2.score - obj1.score;
+			});
+
+			best = url_info.slice(0, num_best);
+			worst = url_info.slice(url_info.length - num_worst, url_info.length);
+
+			// FOR TESTING ONLY
+			document.getElementById("test_result_for").innerHTML = JSON.stringify(best);
+			document.getElementById("test_result_against").innerHTML = JSON.stringify(worst);
+		}
+	}
+}
+
+function get_targeted_sentimental(urls, word) {
+
+	count = 0;
+	url_info = [];
+	// For each url, need to fetch score
+	expected_total_count = urls.length;
+
+	for (var i = 0 ; i < urls.length ; i ++) {
+		ajax_alchemy(
+			'sentiment_targeted',
+			'url',
+			[
+				['showSourceText', '1'],
+				['target', 'ObamaCare'],
+				['url', urls[i]],
+			],
+			finish_fetch_score
+			);
+	}
+
+	// count = 0;
+	// For each url left, fetch summary
+	// expected_total_count += Math.min(urls.length, NUM_FOR + NUM_AGAINST);
 }

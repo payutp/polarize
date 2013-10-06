@@ -1,4 +1,44 @@
 <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 <script src="alchemy.js"></script>
 
-<div id="test_result">Waiting for results ...</id>
+<!DOCTYPE html>
+<html>
+<body>
+
+For:
+<div id='test_result_for'>Waiting for for results ...</div>
+Against:
+<div id='test_result_against'>Waiting for against results ...</div>
+For Summary:
+<div id='test_result_for_summary'>Waiting for for summary results ...</div>
+Against Summary:
+<div id='test_result_against_summary'>Waiting for against summary results ...</div>
+
+
+<script> 
+get_targeted_sentimental([
+	'http://www.pocketfullofliberty.com/8-things-that-suck-about-obamacare/', 
+	'http://www.foxnews.com/opinion/2012/03/28/5-reasons-obamacare-is-already-good-for/',
+	'http://healthpopuli.com/2013/07/29/10-reasons-why-obamacare-is-good-for-us/',
+	'http://www.nationaljournal.com/healthcare/why-obamacare-is-good-for-entrepreneurs-20130603/',
+	'http://www.cato.org/publications/briefing-paper/obamacare-bad-deal-young-adults/',
+	'http://www.forbes.com/sites/realspin/2013/08/21/obamacare-is-really-really-bad-for-you-especially-if-youre-young/',
+	'http://www.foxnews.com/opinion/2013/09/30/five-reasons-americans-already-love-obamacare-plus-one-reason-why-theyre-gonna/',
+	'http://www.nationalreview.com/corner/358614/sorry-mr-president-there-serious-evidence-obamacare-bad-economic-growth-patrick',
+	], 
+	'ObamaCare');
+</script>
+
+<!--ajax_alchemy(
+	'sentiment_targeted',
+	'url',
+	[['url','http://www.pocketfullofliberty.com/8-things-that-suck-about-obamacare/'],
+	['showSourceText', '1'],
+	['target', 'ObamaCare']],
+	function(data) {
+		document.getElementById("test_result").innerHTML = data.docSentiment.score;
+	}
+	);-->
+
+</body>
+</html>
