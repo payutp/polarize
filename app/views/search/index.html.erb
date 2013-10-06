@@ -1,0 +1,72 @@
+<head>
+
+<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script|Rambla:700,400|Oleo+Script' type='text/css'>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<%= stylesheet_link_tag "css/search" %>
+<%= stylesheet_link_tag "css/960" %>
+<%= stylesheet_link_tag "css/960_12_col" %>
+<title>Polarize</title>
+</head>
+
+<body>
+<div id="container" class="container_12">
+  <div id="topbar">
+    <div id="logo" class="grid_3 intopbar">
+      <h1 class="inintopbar">
+        <%= link_to image_tag("logo_small.png"), {:action => 'index', :controller => 'home'} %>
+      </h1>
+    </div>
+    <div id="searchbar" class="grid_8 intopbar">
+      <form class="inintopbar">
+        <div class="grid_6 alpha"><input id="query" type="text" name="query" autofocus></div>
+        <div class="grid_2 omega"><input id="b1" type="Submit" class="whitebutton" value="Polarize!"></div>
+      </form>
+    </div>
+    <div id="aboutbutton" class="grid_1 intopbar">
+      About
+    </div>
+  </div>
+  <div class="clear below"></div>
+  <div id="topicbar" class="grid_12 topic">
+    <div>Here's what people say about</div>
+    <div class="bigtopic"></div>
+  </div>
+  <div class="clear below"></div>
+
+  <div id="progressbar"><div class="progress-label">Loading...</div></div>
+
+  <div class="grid_6" style="visibility:hidden">
+    <h2 class="positive">Positive</h2>
+    <% 5.times.each do |i|%>
+      <div class="positive results">
+        <div class="positive block"></div>
+        <div class="actualresult">
+          <div class="positive sentence" id="possentence<%=i%>"></div>
+          <div class="article"><a class="articlelink" id="poslink<%=i%>" href="#"></a><div id="posauthor<%=i%>"></div></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ <div class="grid_6" style="visibility:hidden">
+    <h2 class="negative">Negative</h2>
+    <% 5.times.each do |i| %>
+      <div class="negative results">
+        <div class="negative block"></div>
+        <div class="actualresult">
+          <div class="negative sentence" id="negsentence<%=i%>" ></div>
+          <div class="article"><a class="articlelink" id="neglink<%=i%>" href="#"></a> <div id="negauthor<%=i%>"></div></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="clear"></div>
+</div>
+</body>
+
+</html>
+
+
+
+<%= render :partial => "ajax_call.js" %>
+
+

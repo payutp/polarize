@@ -1,0 +1,70 @@
+body {
+  background-image: url(<%= asset_path "bg5.png" %>);
+  font-family: 'Verdana', sans-serif;
+}
+
+h1 {
+  font-family: 'News Cycle', sans-serif;
+  font-weight: bold;
+  font-size: 44px;
+  line-height: 50px;
+  text-shadow: 2px 2px 3px #ffffff;
+  margin: 10px 0px;
+}
+
+#container {
+  margin-top: 240px;
+}
+
+#query {
+  font-size: 18px;
+  width: 100%;
+  height: 25px;
+}
+
+#hint {
+  font-size: 11px;
+  color: #444444;
+}
+
+.positive-title {
+  color: #c83737;
+}
+
+.negative-title {
+  color: #2c5aa0;
+}
+
+.whitebutton {
+	-moz-box-shadow: 2px 2px 6px 0px #a3a3a3;
+	-webkit-box-shadow: 2px 2px 6px 0px #a3a3a3;
+	box-shadow: 2px 2px 6px 0px #a3a3a3;
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #2c5aa0), color-stop(1, #235197) );
+	background: -moz-linear-gradient( center top, #2c5aa0 5%, #235197 100% );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2c5aa0', endColorstr='#235197');
+	background-color: #2c5aa0;
+  border: 0px;
+	display: inline-block;
+	color: #eeeeee;
+	font-family: Verdana;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+  width: 100%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 1px 1px 0px #222222;
+}
+
+.whitebutton:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #235197), color-stop(1, #2c5aa0) );
+	background:-moz-linear-gradient( center top, #235197 5%, #2c5aa0 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#235197', endColorstr='#2c5aa0');
+	background-color:#235197;
+}
+
+.whitebutton:active {
+	position:relative;
+	top:1px;
+}
