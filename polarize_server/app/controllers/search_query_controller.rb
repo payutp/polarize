@@ -84,13 +84,13 @@ class SearchQueryController < ApplicationController
                     tmp = strings.join("+")
 
                     if i == 0
-                        url = 'http://google.com/search?q=' + tmp + '+is+good'
+                        url = 'http://google.com/search?tbm=nws&q=' + tmp + '+is+good'
                     elsif i == 1
-                        url = 'http://google.com/search?q=' + tmp + '+is+bad'
+                        url = 'http://google.com/search?tbm=nws&q=' + tmp + '+is+bad'
                     elsif i == 2
-                        url = 'http://google.com/search?q=' + tmp
+                        url = 'http://google.com/search?tbm=nws&q=' + tmp
                     else
-                        url = 'http://google.com/search?start=' + (10 * (i - 2)).to_s + '&q=' + tmp
+                        url = 'http://google.com/search?tbm=nws&start=' + (10 * (i - 2)).to_s + '&q=' + tmp
                     end
 
                     doc = Nokogiri::HTML(open(url, :read_timeout => 10))
