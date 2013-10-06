@@ -1,4 +1,4 @@
 polarize
 ========
 
-URL: polar-taiga-9127.herokuapp.com
+URL: http://polar-taiga-9127.herokuapp.com
