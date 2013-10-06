@@ -36,7 +36,7 @@
   <div id="progressbar"><div class="progress-label">Loading...</div></div>
 
   <div class="grid_6" style="visibility:hidden">
-    <h2 class="positive">Positive</h2>
+    <h2 class="positive" id="posdesc">Positive</h2>
     <% 5.times.each do |i|%>
       <div class="positive results">
         <div class="positive block"></div>
@@ -48,7 +48,7 @@
     <% end %>
   </div>
  <div class="grid_6" style="visibility:hidden">
-    <h2 class="negative">Negative</h2>
+    <h2 class="negative" id="negdesc">Negative</h2>
     <% 5.times.each do |i| %>
       <div class="negative results">
         <div class="negative block"></div>
