@@ -16,8 +16,8 @@ class SearchQueryController < ApplicationController
             pres = params[:t].downcase.index(vs_word)
             if pres != nil
                 vs = 1
-                t1 = params[:t][0, pres - 1]
-                t2 = params[:t][pres - 1 + vs_word.length, params[:t].length - pres + 1 + vs_word.length]
+                t1 = params[:t][0, pres]
+                t2 = params[:t][pres + vs_word.length, params[:t].length - pres + vs_word.length]
             end
         end
 

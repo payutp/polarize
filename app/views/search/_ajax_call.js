@@ -34,6 +34,10 @@ $(function() {
                 }
             }
         }
+        if (data["vs"]) {
+            $('#posdesc').html(data["t1"]);
+            $('#negdesc').html(data["t2"]);
+        }
         $(".grid_6").css("visibility", "visible");
     });
 

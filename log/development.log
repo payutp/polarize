@@ -24676,3 +24676,1945 @@ Served asset /application.js - 304 Not Modified (0ms)
 
 Started GET "/assets/logo.png" for 127.0.0.1 at 2013-10-06 08:28:29 -0400
 Served asset /logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-06 08:31:30 -0400
+Connecting to database specified by database.yml
+Processing by HomeController#index as HTML
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_home_index_html_erb___969385969951745507_70262951992440 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/home/index.html.erb:39)
+  Rendered home/_get_url.js (0.3ms)
+  Rendered home/index.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 68ms (Views: 67.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /jquery.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /jquery-ui.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /home.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /alchemy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/main.css?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /css/main.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /css/960.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /search.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /search_query.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /application.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2013-10-06 08:31:31 -0400
+Served asset /logo.png - 304 Not Modified (1ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&query=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"MIT vs Harvard"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262953079300 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.5ms)
+  Rendered search/index.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 27ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /home.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /css/search.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Served asset /logo_small.png - 304 Not Modified (1ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:31:36 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 11078ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Git+vs+Hg" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Git vs Hg"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262953079300 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.1ms)
+  Rendered search/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /alchemy.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /css/960.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Git+vs+Hg" for 127.0.0.1 at 2013-10-06 08:32:25 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Git vs Hg"}
+Completed 200 OK in 21794ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Miley+Cyrus" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Miley Cyrus"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262953079300 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /css/960.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /search_query.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Miley+Cyrus" for 127.0.0.1 at 2013-10-06 08:33:18 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Miley Cyrus"}
+Completed 200 OK in 6581ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"MIT vs Harvard"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262953079300 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.1ms)
+  Rendered search/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /alchemy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:35:02 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 9224ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:35:11 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 10236ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:37:05 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 8922ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"MIT vs Harvard"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262953079300 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 11ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /search.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:37:24 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bg5.png" for 127.0.0.1 at 2013-10-06 08:37:25 -0400
+Served asset /bg5.png - 304 Not Modified (1ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:37:25 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 13078ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"MIT vs Harvard"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.5ms)
+  Rendered search/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /search.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:39:44 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 10172ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:40:28 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 12957ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:40:41 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"MIT vs Harvard"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.8ms)
+  Rendered search/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 10ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:40:41 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:41 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:41 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:41 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:41 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:41 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:40:42 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 7456ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Obamacare" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Obamacare"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /alchemy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /search.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Obamacare" for 127.0.0.1 at 2013-10-06 08:41:07 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Obamacare"}
+Completed 200 OK in 13577ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Batman+versus+Superman" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Batman versus Superman"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.1ms)
+  Rendered search/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /alchemy.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Batman+versus+Superman" for 127.0.0.1 at 2013-10-06 08:41:57 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Batman versus Superman"}
+Completed 200 OK in 11262ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Vim+v.s.+Emacs" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Vim v.s. Emacs"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.1ms)
+  Rendered search/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /alchemy.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /search.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Vim+v.s.+Emacs" for 127.0.0.1 at 2013-10-06 08:42:50 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Vim v.s. Emacs"}
+Completed 200 OK in 10752ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=men+vs+women" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"men vs women"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /alchemy.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=men+vs+women" for 127.0.0.1 at 2013-10-06 08:43:33 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"men vs women"}
+Completed 200 OK in 15929ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"MIT vs Harvard"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.1ms)
+  Rendered search/index.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 38ms (Views: 38.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bg5.png" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Served asset /bg5.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=MIT+vs+Harvard" for 127.0.0.1 at 2013-10-06 08:51:50 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"MIT vs Harvard"}
+Completed 200 OK in 16010ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Windows+vs+Mac" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Windows vs Mac"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 9ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /css/960.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Windows+vs+Mac" for 127.0.0.1 at 2013-10-06 08:52:33 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Windows vs Mac"}
+Completed 200 OK in 11360ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Obamacare" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Obamacare"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Obamacare" for 127.0.0.1 at 2013-10-06 08:53:43 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Obamacare"}
+Completed 200 OK in 6957ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Tiger+woods" for 127.0.0.1 at 2013-10-06 08:54:46 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Tiger woods"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:54:46 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /css/960.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /search.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Tiger+woods" for 127.0.0.1 at 2013-10-06 08:54:47 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Tiger woods"}
+Completed 200 OK in 18727ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Justin+Bieber" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Justin Bieber"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.1ms)
+  Rendered search/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Justin+Bieber" for 127.0.0.1 at 2013-10-06 08:57:18 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Justin Bieber"}
+Completed 200 OK in 17884ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Oprah+Winfrey" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Oprah Winfrey"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Oprah+Winfrey" for 127.0.0.1 at 2013-10-06 08:57:46 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Oprah Winfrey"}
+Completed 200 OK in 15064ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=ellen+degeneres" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"ellen degeneres"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=ellen+degeneres" for 127.0.0.1 at 2013-10-06 08:58:36 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"ellen degeneres"}
+Completed 200 OK in 14037ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=michael+jackson" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"michael jackson"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 8ms (Views: 8.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bg5.png" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Served asset /bg5.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=michael+jackson" for 127.0.0.1 at 2013-10-06 09:00:18 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"michael jackson"}
+Completed 200 OK in 14049ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=polar+bear" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"polar bear"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /alchemy.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=polar+bear" for 127.0.0.1 at 2013-10-06 09:01:12 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"polar bear"}
+Completed 200 OK in 18131ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Google" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Google"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 8ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /alchemy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /css/960.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Google" for 127.0.0.1 at 2013-10-06 09:02:12 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Google"}
+Completed 200 OK in 12633ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=Facebook" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"Facebook"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.1ms)
+  Rendered search/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 9ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Facebook" for 127.0.0.1 at 2013-10-06 09:04:34 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Facebook"}
+Completed 200 OK in 13255ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=The+weather+channel" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"The weather channel"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /alchemy.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bg5.png" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Served asset /bg5.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=The+weather+channel" for 127.0.0.1 at 2013-10-06 09:06:12 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"The weather channel"}
+Completed 200 OK in 7847ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Processing by HomeController#index as HTML
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_home_index_html_erb___969385969951745507_70262951992440 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/home/index.html.erb:39)
+  Rendered home/_get_url.js (0.0ms)
+  Rendered home/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 108ms (Views: 107.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /alchemy.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /home.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/css/main.css?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /css/main.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /logo.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bg5.png" for 127.0.0.1 at 2013-10-06 09:07:25 -0400
+Served asset /bg5.png - 304 Not Modified (0ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&query=Vim+vs.+Emacs" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"utf8"=>"✓", "query"=>"Vim vs. Emacs"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 9ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /home.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /search.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=Vim+vs.+Emacs" for 127.0.0.1 at 2013-10-06 09:08:45 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"Vim vs. Emacs"}
+Completed 200 OK in 16970ms (Views: 0.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/search?query=VIM+VS+EMACS" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Processing by SearchController#index as HTML
+  Parameters: {"query"=>"VIM VS EMACS"}
+DEPRECATION WARNING: Passing the format in the template name is deprecated. Please pass render with :formats => [:js] instead. (called from _app_views_search_index_html_erb__3533432505911269321_70262952757480 at /Users/pasin/Dropbox/MIT/Junior/FALL2013/hackMIT/polarize/app/views/search/index.html.erb:70)
+  Rendered search/_ajax_call.js (0.0ms)
+  Rendered search/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/alchemy.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /alchemy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /jquery-ui.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/search.css?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /css/search.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960.css?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /css/960.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/css/960_12_col.css?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /css/960_12_col.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.formalize.min.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /jquery.formalize.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/search.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /search.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/search_query.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /search_query.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/logo_small.png" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Served asset /logo_small.png - 304 Not Modified (0ms)
+
+
+Started GET "/search_query/access_url.json?t=VIM+VS+EMACS" for 127.0.0.1 at 2013-10-06 09:09:21 -0400
+Processing by SearchQueryController#access_url as JSON
+  Parameters: {"t"=>"VIM VS EMACS"}
+Completed 200 OK in 16154ms (Views: 0.2ms | ActiveRecord: 0.0ms)
