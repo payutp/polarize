@@ -12,7 +12,7 @@
   <div id="topbar">
     <div id="logo" class="grid_3 intopbar">
       <h1 class="inintopbar">
-        <%= image_tag "logo_small.png" %>
+        <%= link_to image_tag("logo_small.png"), {:action => 'index', :controller => 'home'} %>
       </h1>
     </div>
     <div id="searchbar" class="grid_7 intopbar">
