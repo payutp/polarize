@@ -9,11 +9,11 @@ require 'json'
 class SearchQueryController < ApplicationController
     def access_url
 
-        search_resulted_urls = search_from_google(3, params[:t])
+        search_resulted_urls, titles = search_from_google(3, params[:t])
         print 1
         absolute_urls = follow_relative_urls(search_resulted_urls)
         print 2
-        alchemy_infomation = find_alchemy_infomation(absolute_urls, params[:t])
+        alchemy_infomation = find_alchemy_infomation(absolute_urls, params[:t], titles)
         print 3
 
         sentences, topic_score = find_topic_sentences(alchemy_infomation, params[:t])
@@ -75,6 +75,9 @@ class SearchQueryController < ApplicationController
         text = query_text
         strings = text.split
 
+        titles_hash = {}
+        titles = []
+
         num_pages.times do |i|
             threads[i] = Thread.new do
                 begin
@@ -90,11 +93,17 @@ class SearchQueryController < ApplicationController
                     doc = Nokogiri::HTML(open(url, :read_timeout => 10))
 
                     mutex_instance.synchronize do
-                        doc.css('h3.r a.l', '//h3/a').each do |link|
+                        doc.css('h3.r a').each do |link|
                             if !link['href'].start_with?('http')
-                                search_resulted_urls.push("http://google.com" + link['href'])
+                                search_url = "http://google.com" + link['href']
                             else
-                                search_resulted_urls.push(link['href'])
+                                search_url = link['href']
+                            end
+                            title = link.content
+                            if !titles_hash.include?(title)
+                                search_resulted_urls.push(search_url)
+                                titles.push(title)
+                                titles_hash[title] = 1
                             end
                         end
                     end
@@ -108,7 +117,7 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
-        return search_resulted_urls.uniq
+        return search_resulted_urls, titles
      end
 
     def follow_relative_urls(search_resulted_urls)
@@ -127,7 +136,7 @@ class SearchQueryController < ApplicationController
                     end
                     uri = URI.escape(doc.base_uri.scheme + "://" + doc.base_uri.host + doc.base_uri.path + query)
                     mutex_instance.synchronize do
-                        absolute_urls.push(uri)
+                        absolute_urls[ind] = uri
                     end
                 rescue Timeout::Error
                     p "Timeout Follow Relative URLs: " + search_resulted_url
@@ -141,20 +150,42 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
-        return absolute_urls.uniq
+        return absolute_urls
     end
 
-    def find_alchemy_infomation(urls, keyword)
-        alchemy_base_path = 'http://access.alchemyapi.com/calls/url/';
-        global_args = '?apikey=61cc00a7028c5f89e4844f7958d51cfef45a92eb&outputMode=json';
+    def clean_keyword(keyword)
+        cleaned = []
+        keyword.each_char do | c |
+            if c.ord >= 65 && c.ord <= 90 || c.ord >= 97 && c.ord <= 122 || c.ord >= 48 && c.ord <= 57
+                cleaned.push c
+            else
+                cleaned.push ' '
+            end
+        end
+        cleaned = cleaned.join().split
+        leng = -1
+        best = ''
+        cleaned.each do |word|
+            if word.length > leng
+                leng = word.length
+                best = word
+            end
+        end
+        return best
+    end
+
+    def find_alchemy_infomation(urls, keyword, titles)
+        alchemy_base_path = 'http://access.alchemyapi.com/calls/url/'
+        global_args = '?apikey=61cc00a7028c5f89e4844f7958d51cfef45a92eb&outputMode=json'
 
         target_sentiment_app = 'URLGetTargetedSentiment'
         keyword_app = 'URLGetRankedKeywords'
         author_app = 'URLGetAuthor'
         title_app = 'URLGetTitle'
 
-        target_sentiment_args = '&showSourceText=1&target=' + URI.escape(keyword)
-        keyword_args = '&sentiment=1'
+        target_sentiment_args = '&target=' + clean_keyword(keyword)
+        puts target_sentiment_args
+        keyword_args = '&showSourceText=1&sentiment=1'
         author_args = ''
         title_args = ''
 
@@ -262,7 +293,7 @@ class SearchQueryController < ApplicationController
             end
             if titles_raw[ind]['status'] != 'OK'
                 titles_raw[ind]['status'] = 'OK'
-                titles_raw[ind]['title'] = ''
+                titles_raw[ind]['title'] = titles[ind]
             end
             if fulltexts_raw[ind]['status'] != 'OK' || keywords_raw[ind]['status'] != 'OK'
                 puts 'url : ' + url + ' failed.' + fulltexts_raw[ind]['status'] + ' ' +
@@ -283,7 +314,7 @@ class SearchQueryController < ApplicationController
             alchemy_infomation.push({
                 'score' => fulltexts_raw[ind]['docSentiment']['score'].to_f(),
                 'url' => url,
-                'text' => fulltexts_raw[ind]['text'],
+                'text' => keywords_raw[ind]['text'],
                 'author' => authors_raw[ind]['author'],
                 'title' => titles_raw[ind]['title'],
                 'keywords' => keywords_raw[ind]['keywords'],
