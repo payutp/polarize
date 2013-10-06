@@ -10,6 +10,13 @@ PolarizeServer::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
+  resources :search_query do
+    collection do
+      get 'access_url'
+    end
+  end
+
+  root :to => "home#index"
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
