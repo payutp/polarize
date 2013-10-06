@@ -9,7 +9,7 @@ require 'json'
 class SearchQueryController < ApplicationController
     def access_url
 
-        search_resulted_urls, titles = search_from_google(3, params[:t])
+        search_resulted_urls, titles = search_from_google(2, params[:t])
         print 1
         absolute_urls = follow_relative_urls(search_resulted_urls)
         print 2
@@ -78,17 +78,20 @@ class SearchQueryController < ApplicationController
         titles_hash = {}
         titles = []
 
-        num_pages.times do |i|
+        (num_pages + 2).times do |i|
             threads[i] = Thread.new do
                 begin
-                    if i == 0
-                        url = 'http://google.com/search?q='
-                    else
-                        url = 'http://google.com/search?start=' + (10 * i).to_s + '&q='
-                    end
-
                     tmp = strings.join("+")
-                    url = url + tmp
+
+                    if i == 0
+                        url = 'http://google.com/search?q=' + tmp + '+is+good'
+                    elsif i == 1
+                        url = 'http://google.com/search?q=' + tmp + '+is+bad'
+                    elsif i == 2
+                        url = 'http://google.com/search?q=' + tmp
+                    else
+                        url = 'http://google.com/search?start=' + (10 * (i - 2)).to_s + '&q=' + tmp
+                    end
 
                     doc = Nokogiri::HTML(open(url, :read_timeout => 10))
 
@@ -202,6 +205,9 @@ class SearchQueryController < ApplicationController
         titles_raw = []
 
         urls.each_with_index do |url, ind|
+            if !url
+                next
+            end
             thread = Thread.new do
                 begin
                     alchemy_api_url = alchemy_base_path + target_sentiment_app + global_args + target_sentiment_args + '&url=' + url
@@ -220,6 +226,9 @@ class SearchQueryController < ApplicationController
         end
 
         urls.each_with_index do |url, ind|
+            if !url
+                next
+            end
             thread = Thread.new do
                 begin
                     alchemy_api_url = alchemy_base_path + keyword_app + global_args + keyword_args + '&url=' + url
@@ -238,6 +247,9 @@ class SearchQueryController < ApplicationController
         end
 
         urls.each_with_index do |url, ind|
+            if !url
+                next
+            end
             thread = Thread.new do
                 begin
                     alchemy_api_url = alchemy_base_path + author_app + global_args + author_args + '&url=' + url
@@ -256,6 +268,9 @@ class SearchQueryController < ApplicationController
         end
 
         urls.each_with_index do |url, ind|
+            if !url
+                next
+            end
             thread = Thread.new do
                 begin
                     alchemy_api_url = alchemy_base_path + title_app + global_args + title_args + '&url=' + url
@@ -280,6 +295,9 @@ class SearchQueryController < ApplicationController
         alchemy_infomation = []
 
         urls.each_with_index do |url, ind|
+            if !url
+                next
+            end
             if fulltexts_raw[ind] == nil || keywords_raw[ind] == nil ||
                authors_raw[ind] == nil || titles_raw[ind] == nil
                 puts 'url0 : ' + url + ' failed.' + fulltexts_raw[ind].to_s() + ' ' +
