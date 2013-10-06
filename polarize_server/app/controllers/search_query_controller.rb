@@ -7,21 +7,27 @@ require 'set'
 require 'json'
 
 class SearchQueryController < ApplicationController
-     def access_url
+    def access_url
 
         search_resulted_urls = search_from_google(3, params[:t])
-
+        print 1
         absolute_urls = follow_relative_urls(search_resulted_urls)
-
+        print 2
         fulltexts_with_score = find_targeted_sentiment(absolute_urls, params[:t])
+        print 3
+
+        sentences = find_topic_sentences(fulltexts_with_score)
+        fulltexts_with_score.each_with_index do |ftws, ind|
+            ftws['sentence'] = sentences[ind]
+        end
 
         respond_to do |format|
             format.json {render :json => fulltexts_with_score.to_json}
             format.all {render :text => "Only JSON supported at the moment"}
         end
-     end
+    end
 
-     def search_from_google(num_pages, query_text)
+    def search_from_google(num_pages, query_text)
         search_resulted_urls = []
 
         mutex_instance = Mutex.new
@@ -62,9 +68,9 @@ class SearchQueryController < ApplicationController
         end
 
         return search_resulted_urls
-     end
+    end
 
-     def follow_relative_urls(search_resulted_urls)
+    def follow_relative_urls(search_resulted_urls)
         mutex_instance = Mutex.new
         absolute_urls = []
         threads = []
@@ -88,47 +94,6 @@ class SearchQueryController < ApplicationController
         end
 
         return absolute_urls
-     end
-
-     @@abbreviations = Set.new ["abbr.","abr.","acad.","adj.","adm.","adv.","agr.",
-        "agri.","agric.","anon.","app.","approx.","assn.","b.","bact.","bap.","bib.",
-        "bibliog.","biog.","biol.","bk.","bkg.","bldg.","blvd.","bot.","bp.","brig.",
-        "brig.","gen.","bro.","bur.","c.a.","cal.","cap.","capt.","cath.","cc.","c.c.",
-        "cent.","cf.","ch.","chap.","chem.","chm.","chron.","cir.","/circ.","cit.",
-        "civ.","clk.","cm.","co.","c.o.","c.o.d.","col.","colloq.","com.","comdr.",
-        "comr.","comp.","con.","cond.","conf.","cong.","consol.","constr.","cont.",
-        "cont.","contd.","corp.","cp.","cpl.","cr.","crit.","ct.","cu.","cwt.","d.",
-        "d.","dec.","def.","deg.","dep.","dept.","der.","deriv.","diag.","dial.",
-        "dict.","dim.","dipl.","dir.","disc.","dist.","distr.","div.","dm.","do.",
-        "doc.","doz.","dpt.","dr.","d.t.","dup.","dupl.","dwt.","e.","ea.","eccl.",
-        "eccles.","ecol.","econ.","ed.","e.g.","elec.","elect.","elev.","emp.","e.m.u.",
-        "enc.","ency.","encyc.","encycl.","eng.","entom.","entomol.","esp.","est.","al.",
-        "etc.","seq.","ex.","exch.","exec.","lib.","f.","fac.","fed.","fem.","ff.","fol.",
-        "fig.","fin.","fl.","fn.","fr.","ft.","fwd.","g.","gall.","gaz.","gen.","geog.",
-        "geol.","geom.","gloss.","gov.","govt.","gram.","hab.","corp.","her.","hist.",
-        "hort.","ht.","ib.","ibid.","id.","i.e.","illus.","imp.","in.","inc.","loc.",
-        "cit.","ins.","inst.","intl.","introd.","is.","jour.","jr.","jud.","k.",
-        "kilo.","kt.","lab.","lang.","lat.","l.c.","lib.","lieut.","lt.","lit.",
-        "ltd.","lon.","long.","m.","mach.","mag.","maj.","mas.","masc.","math.",
-        "mdse.","mech.","med.","mem.","mfg.","mfr.","mg.","mgr.","misc.","ml.","mo.",
-        "mod.","ms.","mss.","mt.","mts.","mus.","n.","narr.","natl.","nav.","n.b.",
-        "n.d.","neg.","no.","seq.","n.p.","n.","pag.","obit.","obj.","op.","cit.",
-        "orch.","orig.","oz.","abbrev.","p.","pp.","par.","pat.","/patd.","pct.",
-        "p.d.","pen.","perf.","philos.","phys.","pl.","ppd.","pref.","prin.","prod.",
-        "tem.","pron.","pseud.","psych.","psychol.","pt.","pub.","publ.","q.","qr.",
-        "qt.","qtd.","ques.","quot.","r.b.i.","quot.","rec.","ref.","reg.","rel.",
-        "rev.","riv.","rpt.","s.","sc.","sch.","sci.","sculp.","sec.","secy.","sec.",
-        "sect.","ser.","serg.","sergt.","sgt.","sing.","sol.","sp.","sq.","sub.",
-        "subj.","sup.","supt.","surg.","sym.","syn.","t.","tbs.","tbsp.","tel.",
-        "temp.","terr.","theol.","topog.","trans.","tr.","treas.","trig.","trigon.",
-        "tsp.","twp.","ult.","univ.","usu.","v.","var.","vb.","vers.","vet.","viz.",
-        "vet.","vol.","vox.","pop.","v.p.","vs.","v.","vs.","vss.","v.s.","writ."]
-
-    def sentence_segmentation(text):
-        sentences = []
-
-
-        return sentences
     end
 
     def find_targeted_sentiment(urls, keyword)
@@ -177,5 +142,106 @@ class SearchQueryController < ApplicationController
         fulltexts_with_score = fulltexts_with_score.sort_by{|obj| obj['score'].to_f}
 
         return fulltexts_with_score
-     end
+    end
+
+    @@abbreviations = Set.new ["abbr.","abr.","acad.","adj.","adm.","adv.","agr.",
+        "agri.","agric.","anon.","app.","approx.","assn.","b.","bact.","bap.","bib.",
+        "bibliog.","biog.","biol.","bk.","bkg.","bldg.","blvd.","bot.","bp.","brig.",
+        "brig.","gen.","bro.","bur.","c.a.","cal.","cap.","capt.","cath.","cc.","c.c.",
+        "cent.","cf.","ch.","chap.","chem.","chm.","chron.","cir.","/circ.","cit.",
+        "civ.","clk.","cm.","co.","c.o.","c.o.d.","col.","colloq.","com.","comdr.",
+        "comr.","comp.","con.","cond.","conf.","cong.","consol.","constr.","cont.",
+        "cont.","contd.","corp.","cp.","cpl.","cr.","crit.","ct.","cu.","cwt.","d.",
+        "d.","dec.","def.","deg.","dep.","dept.","der.","deriv.","diag.","dial.",
+        "dict.","dim.","dipl.","dir.","disc.","dist.","distr.","div.","dm.","do.",
+        "doc.","doz.","dpt.","dr.","d.t.","dup.","dupl.","dwt.","e.","ea.","eccl.",
+        "eccles.","ecol.","econ.","ed.","e.g.","elec.","elect.","elev.","emp.","e.m.u.",
+        "enc.","ency.","encyc.","encycl.","eng.","entom.","entomol.","esp.","est.","al.",
+        "etc.","seq.","ex.","exch.","exec.","lib.","f.","fac.","fed.","fem.","ff.","fol.",
+        "fig.","fin.","fl.","fn.","fr.","ft.","fwd.","g.","gall.","gaz.","gen.","geog.",
+        "geol.","geom.","gloss.","gov.","govt.","gram.","hab.","corp.","her.","hist.",
+        "hort.","ht.","ib.","ibid.","id.","i.e.","illus.","imp.","in.","inc.","loc.",
+        "cit.","ins.","inst.","intl.","introd.","is.","jour.","jr.","jud.","k.",
+        "kilo.","kt.","lab.","lang.","lat.","l.c.","lib.","lieut.","lt.","lit.",
+        "ltd.","lon.","long.","m.","mach.","mag.","maj.","mas.","masc.","math.",
+        "mdse.","mech.","med.","mem.","mfg.","mfr.","mg.","mgr.","misc.","ml.","mo.",
+        "mod.","ms.","mss.","mt.","mts.","mus.","n.","narr.","natl.","nav.","n.b.",
+        "n.d.","neg.","no.","seq.","n.p.","n.","pag.","obit.","obj.","op.","cit.",
+        "orch.","orig.","oz.","abbrev.","p.","pp.","par.","pat.","/patd.","pct.",
+        "p.d.","pen.","perf.","philos.","phys.","pl.","ppd.","pref.","prin.","prod.",
+        "tem.","pron.","pseud.","psych.","psychol.","pt.","pub.","publ.","q.","qr.",
+        "qt.","qtd.","ques.","quot.","r.b.i.","quot.","rec.","ref.","reg.","rel.",
+        "rev.","riv.","rpt.","s.","sc.","sch.","sci.","sculp.","sec.","secy.","sec.",
+        "sect.","ser.","serg.","sergt.","sgt.","sing.","sol.","sp.","sq.","sub.",
+        "subj.","sup.","supt.","surg.","sym.","syn.","t.","tbs.","tbsp.","tel.",
+        "temp.","terr.","theol.","topog.","trans.","tr.","treas.","trig.","trigon.",
+        "tsp.","twp.","ult.","univ.","usu.","v.","var.","vb.","vers.","vet.","viz.",
+        "vet.","vol.","vox.","pop.","v.p.","vs.","v.","vs.","vss.","v.s.","writ."]
+
+    def sentence_segmentation(text)
+        segemented_sentences = []
+        sentence = []
+        word = []
+        start = 0
+        count = 0
+        text.each_char do |c|
+            if c.ord >= 33 && c.ord <= 126
+                count = 0
+                word.push c
+            else
+                count += 1
+                if count > 3 && sentence.length > 0
+                    if sentence.length > 5
+                        segemented_sentences.push sentence.join(' ')
+                    end
+                    sentence = []
+                end
+                if word.length > 0
+                    word = word.join()
+                    sentence.push word
+                    if ((word[-1] == '.' || word[-1] == '!' || word[-1] == '?') &&
+                        word.length > 3 && word[-2] != '.' && word[-3] != '.' &&
+                        !@@abbreviations.include?(word.downcase))
+                        if sentence.length > 5
+                            segemented_sentences.push sentence.join(' ')
+                        end
+                        sentence = []
+                    end
+                    word = []
+                end
+            end
+        end
+        if word.length > 0
+            sentence.push word
+            word = []
+        end
+        if sentence.length > 0
+            segemented_sentences.push sentence.join(' ')
+            sentence = []
+        end
+        return segemented_sentences
+    end
+
+    def find_topic_sentences(fulltexts_with_score)
+        mutex_instance = Mutex.new
+        threads = []
+        topic_sentences = []
+
+        fulltexts_with_score.each_with_index do |ftws, ind|
+            threads[ind] = Thread.new do
+                segmented_sentences = sentence_segmentation(ftws['text']).join("\n")
+
+                mutex_instance.synchronize do
+                    topic_sentences[ind] = segmented_sentences
+                end
+            end
+        end
+
+        threads.each do |thread|
+            thread.join()
+        end
+
+        return topic_sentences
+    end
+
 end
