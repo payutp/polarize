@@ -13,16 +13,16 @@ class SearchQueryController < ApplicationController
         print 1
         absolute_urls = follow_relative_urls(search_resulted_urls)
         print 2
-        fulltexts_with_score = find_targeted_sentiment(absolute_urls, params[:t])
+        alchemy_infomation = find_alchemy_infomation(absolute_urls, params[:t])
         print 3
 
-        sentences = find_topic_sentences(fulltexts_with_score)
-        fulltexts_with_score.each_with_index do |ftws, ind|
-            ftws['sentence'] = sentences[ind]
+        sentences = find_topic_sentences(alchemy_infomation)
+        alchemy_infomation.each_with_index do |alif, ind|
+            alif['sentence'] = sentences[ind]
         end
 
         respond_to do |format|
-            format.json {render :json => fulltexts_with_score.to_json}
+            format.json {render :json => alchemy_infomation.to_json}
             format.all {render :text => "Only JSON supported at the moment"}
         end
     end
@@ -91,7 +91,9 @@ class SearchQueryController < ApplicationController
                         absolute_urls.push(uri)
                     end
                 rescue Timeout::Error
-                    p "Timeout Follow Relative URLs: " + url
+                    p "Timeout Follow Relative URLs: " + search_resulted_url
+                rescue Exception => e
+                    p "Error " + e + " Follow Relative URLs: " + search_resulted_url
                 end
             end
         end
@@ -101,9 +103,138 @@ class SearchQueryController < ApplicationController
         end
 
         return absolute_urls.uniq
-     end
+    end
 
-    def find_targeted_sentiment(urls, keyword)
+    def find_alchemy_infomation(urls, keyword)
+        alchemy_base_path = 'http://access.alchemyapi.com/calls/url/';
+        global_args = '?apikey=61cc00a7028c5f89e4844f7958d51cfef45a92eb&outputMode=json';
+
+        target_sentiment_app = 'URLGetTargetedSentiment'
+        keyword_app = 'URLGetRankedKeywords'
+        author_app = 'URLGetAuthor'
+        title_app = 'URLGetTitle'
+
+        target_sentiment_args = '&showSourceText=1&target=' + keyword
+        keyword_args = '&sentiment=1'
+        author_args = ''
+        title_args = ''
+
+        mutex_sentiment = Mutex.new
+        mutex_keyword = Mutex.new
+        mutex_author = Mutex.new
+        mutex_title = Mutex.new
+
+        threads = []
+
+        fulltexts_raw = []
+        keywords_raw = []
+        authors_raw = []
+        titles_raw = []
+
+        urls.each_with_index do |url, ind|
+            thread = Thread.new do
+                begin
+                    alchemy_api_url = alchemy_base_path + target_sentiment_app + global_args + target_sentiment_args + '&url=' + url
+                    doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
+
+                    mutex_sentiment.synchronize do
+                        fulltexts_raw[ind] = doc
+                    end
+                rescue Timeout::Error
+                    p "Timeout Targeted Sentiment: " + url
+                end
+            end
+            threads.push thread
+        end
+
+        urls.each_with_index do |url, ind|
+            thread = Thread.new do
+                begin
+                    alchemy_api_url = alchemy_base_path + keyword_app + global_args + keyword_args + '&url=' + url
+                    doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
+
+                    mutex_keyword.synchronize do
+                        keywords_raw[ind] = doc
+                    end
+                rescue Timeout::Error
+                    p "Timeout Keyword: " + url
+                end
+            end
+            threads.push thread
+        end
+
+        urls.each_with_index do |url, ind|
+            thread = Thread.new do
+                begin
+                    alchemy_api_url = alchemy_base_path + author_app + global_args + author_args + '&url=' + url
+                    doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
+
+                    mutex_author.synchronize do
+                        authors_raw[ind] = doc
+                    end
+                rescue Timeout::Error
+                    p "Timeout Author: " + url
+                end
+            end
+            threads.push thread
+        end
+
+        urls.each_with_index do |url, ind|
+            thread = Thread.new do
+                begin
+                    alchemy_api_url = alchemy_base_path + title_app + global_args + title_args + '&url=' + url
+                    doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
+
+                    mutex_title.synchronize do
+                        titles_raw[ind] = doc
+                    end
+                rescue Timeout::Error
+                    p "Timeout Title: " + url
+                end
+            end
+            threads.push thread
+        end
+
+        threads.each do |thread|
+            thread.join()
+        end
+
+        alchemy_infomation = []
+
+        urls.each_with_index do |url, ind|
+            if fulltexts_raw[ind] == nil || keywords_raw[ind] == nil ||
+               authors_raw[ind] == nil || titles_raw[ind] == nil ||
+               fulltexts_raw[ind]['status'] != 'OK' || keywords_raw[ind]['status'] != 'OK' ||
+               authors_raw[ind]['status'] != 'OK' || titles_raw[ind]['status'] != 'OK'
+                next
+            end
+
+            if fulltexts_raw[ind]['docSentiment']['type'] == 'neutral'
+                fulltexts_raw[ind]['docSentiment']['score'] = 0
+            end
+
+            keywords_raw[ind]['keywords'].each do |keyword|
+                if keyword['sentiment']['type'] == 'neutral'
+                    keyword['sentiment']['score'] = 0
+                end
+            end
+
+            alchemy_infomation.push({
+                'score' => fulltexts_raw[ind]['docSentiment']['score'],
+                'url' => url,
+                'text' => fulltexts_raw[ind]['text'],
+                'author' => authors_raw[ind]['author'],
+                'title' => titles_raw[ind]['title'],
+                'keywords' => keywords_raw[ind]['keywords'],
+            })
+        end
+
+        alchemy_infomation = alchemy_infomation.sort_by{|obj| obj['score'].to_f}
+
+        return alchemy_infomation
+    end
+
+    def find_keyword(urls, keyword)
         alchemy_sentimental_base_path = 'http://access.alchemyapi.com/calls/url/URLGetTargetedSentiment';
         global_args = '?apikey=61cc00a7028c5f89e4844f7958d51cfef45a92eb&outputMode=json&showSourceText=1&target=' + keyword;
 
@@ -121,7 +252,6 @@ class SearchQueryController < ApplicationController
                     mutex_instance.synchronize do
                         fulltexts_raw.push(doc)
                     end
-                    p "Finish:" + url
                 rescue Timeout::Error
                     p "Timeout Targeted Sentiment: " + url
                 end
@@ -233,17 +363,18 @@ class SearchQueryController < ApplicationController
         return segemented_sentences
     end
 
-    def find_topic_sentences(fulltexts_with_score)
+    def find_topic_sentences(alchemy_infomation)
         mutex_instance = Mutex.new
         threads = []
         topic_sentences = []
 
-        fulltexts_with_score.each_with_index do |ftws, ind|
+        alchemy_infomation.each_with_index do |alif, ind|
             threads[ind] = Thread.new do
-                segmented_sentences = sentence_segmentation(ftws['text']).join("\n")
+                segmented_sentences = sentence_segmentation(alif['text'])
 
                 mutex_instance.synchronize do
-                    topic_sentences[ind] = segmented_sentences
+                    # szu-po should select base on sentiment instead of returning the first one
+                    topic_sentences[ind] = segmented_sentences[0]
                 end
             end
         end
