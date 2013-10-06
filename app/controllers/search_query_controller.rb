@@ -7,16 +7,29 @@ require 'set'
 require 'json'
 
 class SearchQueryController < ApplicationController
+    @@vs_words = [' vs ', ' v.s ', ' v.s. ', ' versus ']
     def access_url
+        vs = 0
+        t1 = nil
+        t2 = nil
+        @@vs_words.each do |vs_word|
+            pres = params[:t].downcase.index(vs_word)
+            if pres != nil
+                vs = 1
+                t1 = params[:t][0, pres - 1]
+                t2 = params[:t][pres - 1 + vs_word.length, params[:t].length - pres + 1 + vs_word.length]
+            end
+        end
 
-        search_resulted_urls, titles = search_from_google(2, params[:t])
+        search_resulted_urls, titles = search_from_google(2, params[:t], vs, t1, t2)
+        query = params[:t]
         print 1
         absolute_urls = follow_relative_urls(search_resulted_urls)
         print 2
-        alchemy_infomation = find_alchemy_infomation(absolute_urls, params[:t], titles)
+        alchemy_infomation = find_alchemy_infomation(absolute_urls, params[:t], vs, titles, t1, t2)
         print 3
 
-        sentences, topic_score = find_topic_sentences(alchemy_infomation, params[:t])
+        sentences, topic_score = find_topic_sentences(alchemy_infomation, query)
         alchemy_infomation.each_with_index do |alif, ind|
             alif['sentence'] = sentences[ind]
             alif['topic_score'] = topic_score[ind]
@@ -59,6 +72,14 @@ class SearchQueryController < ApplicationController
             'positive' => positive,
             'negative' => negative
         }
+        if vs != 0
+            response['vs'] = 1
+            response['t1'] = t1
+            response['t2'] = t2
+        else
+            response['vs'] = 0
+        end
+
 
         respond_to do |format|
             format.json {render :json => response.to_json}
@@ -66,7 +87,7 @@ class SearchQueryController < ApplicationController
         end
     end
 
-    def search_from_google(num_pages, query_text)
+    def search_from_google(num_pages, query_text, vs=0, t1=nil, t2=nil)
         search_resulted_urls = []
 
         mutex_instance = Mutex.new
@@ -74,6 +95,11 @@ class SearchQueryController < ApplicationController
 
         text = query_text
         strings = text.split
+
+        if vs != 0
+            t1 = t1.split.join('+')
+            t2 = t2.split.join('+')
+        end
 
         titles_hash = {}
         titles = []
@@ -84,9 +110,17 @@ class SearchQueryController < ApplicationController
                     tmp = strings.join("+")
 
                     if i == 0
-                        url = 'http://google.com/search?tbm=nws&q=' + tmp + '+is+good'
+                        if vs != 0
+                            url = 'http://google.com/search?q=' + t1 + '+is+better+than+' + t2
+                        else
+                            url = 'http://google.com/search?q=' + tmp + '+is+good'
+                        end
                     elsif i == 1
-                        url = 'http://google.com/search?tbm=nws&q=' + tmp + '+is+bad'
+                        if vs != 0
+                            url = 'http://google.com/search?q=' + t1 + '+is+worse+than+' + t2
+                        else
+                            url = 'http://google.com/search?q=' + tmp + '+is+good'
+                        end
                     elsif i == 2
                         url = 'http://google.com/search?tbm=nws&q=' + tmp
                     else
@@ -177,7 +211,7 @@ class SearchQueryController < ApplicationController
         return best
     end
 
-    def find_alchemy_infomation(urls, keyword, titles)
+    def find_alchemy_infomation(urls, keyword, titles, vs=0, k1=nil, k2=nil)
         alchemy_base_path = 'http://access.alchemyapi.com/calls/url/'
         global_args = '?apikey=61cc00a7028c5f89e4844f7958d51cfef45a92eb&outputMode=json'
 
@@ -186,8 +220,6 @@ class SearchQueryController < ApplicationController
         author_app = 'URLGetAuthor'
         title_app = 'URLGetTitle'
 
-        target_sentiment_args = '&target=' + clean_keyword(keyword)
-        puts target_sentiment_args
         keyword_args = '&showSourceText=1&sentiment=1'
         author_args = ''
         title_args = ''
@@ -210,8 +242,24 @@ class SearchQueryController < ApplicationController
             end
             thread = Thread.new do
                 begin
-                    alchemy_api_url = alchemy_base_path + target_sentiment_app + global_args + target_sentiment_args + '&url=' + url
-                    doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
+                    doc = nil
+                    if vs != 0
+                        target_sentiment_args = '&target=' + clean_keyword(keyword)
+                        alchemy_api_url = alchemy_base_path + target_sentiment_app + global_args + target_sentiment_args + '&url=' + url
+                        doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
+                    else
+                        target_sentiment_args = '&target=' + clean_keyword(k1)
+                        alchemy_api_url = alchemy_base_path + target_sentiment_app + global_args + target_sentiment_args + '&url=' + url
+                        doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
+                        target_sentiment_args = '&target=' + clean_keyword(k2)
+                        alchemy_api_url = alchemy_base_path + target_sentiment_app + global_args + target_sentiment_args + '&url=' + url
+                        doc2 = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
+                        if doc["status"] == 'OK' && doc2["status"] == 'OK'
+                            doc["score"] = (doc["score"].to_f() - doc2["score"].to_f()).to_s()
+                        else
+                            doc["status"] = 'ERROR'
+                        end
+                    end
 
                     mutex_sentiment.synchronize do
                         fulltexts_raw[ind] = doc
