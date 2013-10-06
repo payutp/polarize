@@ -38,27 +38,29 @@ class SearchQueryController < ApplicationController
 
         num_pages.times do |i|
             threads[i] = Thread.new do
-                if i == 0
-                    url = 'http://google.com/search?q='
-                else
-                    url = 'http://google.com/search?start=' + (10 * i).to_s + '&q='
-                end
-
-                tmp = strings.join("+")
-                url = url + tmp
-
-                doc = Nokogiri::HTML(open(url))
-
-                mutex_instance.synchronize do
-                    doc.css('h3.r a.l', '//h3/a').each do |link|
-                        if
-                            search_resulted_urls.push("http://google.com" + link['href'])
-                        end
-                        # Pasin: I believe that the link below is adv but I'm not sure.
-                        %%if link['href'][0..3] == "http"
-                            search_resulted_urls.push(link['href'])
-                        end%
+                begin
+                    if i == 0
+                        url = 'http://google.com/search?q='
+                    else
+                        url = 'http://google.com/search?start=' + (10 * i).to_s + '&q='
                     end
+
+                    tmp = strings.join("+")
+                    url = url + tmp
+
+                    doc = Nokogiri::HTML(open(url, :read_timeout => 10))
+
+                    mutex_instance.synchronize do
+                        doc.css('h3.r a.l', '//h3/a').each do |link|
+                            if !link['href'].start_with?('http')
+                                search_resulted_urls.push("http://google.com" + link['href'])
+                            else
+                                search_resulted_urls.push(link['href'])
+                            end
+                        end
+                    end
+                rescue Timeout::Error
+                    p "Timeout search from google: " + url
                 end
             end
         end
@@ -67,8 +69,8 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
-        return search_resulted_urls
-    end
+        return search_resulted_urls.uniq
+     end
 
     def follow_relative_urls(search_resulted_urls)
         mutex_instance = Mutex.new
@@ -76,15 +78,20 @@ class SearchQueryController < ApplicationController
         threads = []
         search_resulted_urls.each_with_index do |search_resulted_url, ind|
             threads[ind] = Thread.new do
-                doc = open(search_resulted_url, :allow_redirections => :all)
-                if doc.base_uri.query == nil
-                    query = ''
-                else
-                    query = '?' + doc.base_uri.query
-                end
-                uri = URI.escape(doc.base_uri.scheme + "://" + doc.base_uri.host + doc.base_uri.path + query)
-                mutex_instance.synchronize do
-                    absolute_urls.push(uri)
+                begin
+                    doc = open(search_resulted_url, :allow_redirections => :all, :read_timeout => 10)
+
+                    if doc.base_uri.query == nil
+                        query = ''
+                    else
+                        query = '?' + doc.base_uri.query
+                    end
+                    uri = URI.escape(doc.base_uri.scheme + "://" + doc.base_uri.host + doc.base_uri.path + query)
+                    mutex_instance.synchronize do
+                        absolute_urls.push(uri)
+                    end
+                rescue Timeout::Error
+                    p "Timeout Follow Relative URLs: " + url
                 end
             end
         end
@@ -93,8 +100,8 @@ class SearchQueryController < ApplicationController
             thread.join()
         end
 
-        return absolute_urls
-    end
+        return absolute_urls.uniq
+     end
 
     def find_targeted_sentiment(urls, keyword)
         alchemy_sentimental_base_path = 'http://access.alchemyapi.com/calls/url/URLGetTargetedSentiment';
@@ -107,12 +114,16 @@ class SearchQueryController < ApplicationController
 
         urls.each_with_index do |url, ind|
             threads[ind] = Thread.new do
+                begin
+                    alchemy_api_url = alchemy_sentimental_base_path + global_args + '&url=' + url
+                    doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all, :read_timeout => 10).read)
 
-                alchemy_api_url = alchemy_sentimental_base_path + global_args + '&url=' + url
-                doc = JSON.parse(open(alchemy_api_url, :allow_redirections => :all).read)
-
-                mutex_instance.synchronize do
-                    fulltexts_raw.push(doc)
+                    mutex_instance.synchronize do
+                        fulltexts_raw.push(doc)
+                    end
+                    p "Finish:" + url
+                rescue Timeout::Error
+                    p "Timeout Targeted Sentiment: " + url
                 end
             end
         end
